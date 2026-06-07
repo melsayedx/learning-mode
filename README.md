@@ -42,7 +42,7 @@ The **doc-verifier** agent runs documentation lookups and probes in its own cont
 In Claude Code:
 
 ```
-/plugin marketplace add YOUR_HANDLE/learning-mode-plugin
+/plugin marketplace add melsayedx/learning-mode-plugin
 /plugin install learning-mode@learning-mode-marketplace
 ```
 
@@ -74,13 +74,8 @@ Learning Mode engages when you signal you want to *learn* rather than just ship:
 
 ## Customization
 
-- Replace `YOUR_NAME` / `YOUR_HANDLE` in `plugin.json` and `marketplace.json` before publishing.
 - The journal location is a convention you choose: per-project `docs/learning/<date>-<topic>.md` or a global `~/learning-journal/`. Point your review routine at whichever you pick.
 
 ## Credits
 
 Built to integrate with the [superpowers](https://github.com/obra/superpowers) skill framework by Jesse Vincent. The teaching method is failure-first — let the learner try the naive approach and feel it break before the concept is named (productive failure). The verification method draws on the principle that primary sources settle claims and that running code beats reading docs for behavior.
-
-## License
-
-MIT — see [LICENSE](./LICENSE).
