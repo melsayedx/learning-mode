@@ -42,7 +42,7 @@ The **doc-verifier** agent runs documentation lookups and probes in its own cont
 In Claude Code:
 
 ```
-/plugin marketplace add melsayedx/learning-mode-plugin
+/plugin marketplace add melsayedx/learning-mode
 /plugin install learning-mode@learning-mode-marketplace
 ```
 
