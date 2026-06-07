@@ -1,0 +1,12 @@
+{
+  "name": "learning-mode",
+  "description": "Guided, hands-on learning for unfamiliar technology. Claude explains, questions, and reviews but does not write your implementation, so you build it yourself. Contrasts naive vs production approaches with verified, cited sources, offers low-level deep dives on request, and ships a read-only doc-verifier agent that grounds factual claims against primary sources.",
+  "version": "0.1.0",
+  "author": {
+    "name": "YOUR_NAME",
+    "url": "https://github.com/YOUR_HANDLE"
+  },
+  "homepage": "https://github.com/YOUR_HANDLE/learning-mode-plugin",
+  "repository": "https://github.com/YOUR_HANDLE/learning-mode-plugin",
+  "license": "MIT"
+}
