@@ -135,6 +135,31 @@ webhooks); a *concept-only* session follows the same arc reasoned rather than bu
 "When there's nothing to build, the construction is mental" above), and a concept-specific
 worked example can be added as its own reference and routed here the same way.
 
+## Crystallize the concept into a titled entry
+
+The arc earns the concept; this is where you name it and lock it in. At the point the
+conversation needs to introduce the concept — right after the naive attempt has failed —
+produce a compact mini-wiki entry, and produce it in *both* paths: when the learner
+reached the technology themselves, and when they didn't. It is not optional either way.
+Arriving at the insight yourself ("the server has to push me the event") is not the same
+as holding a precise definition or knowing where else the idea is used — self-discovery
+gives the aha, the entry gives the clean, complete overview. So produce it even when the
+learner clearly grasped the gist; don't skip consolidation because they seem to have it.
+Title it with the concept's own name (e.g. "Webhooks"), covering:
+
+- **Definition** — what it is, in one or two precise sentences.
+- **Why it exists** — the problem it solves, tied to the failure they just hit, not a generic blurb.
+- **Where else it shows up** — other real use cases, if any, so they see a general pattern rather than a one-off trick (webhooks, for instance, also drive CI pipelines and chat integrations, not just payment processors).
+
+Run the arc first even when the learner doesn't get there on their own — let them try, then
+introduce it this way; never front-load the entry before the struggle, or you lose the
+productive failure that makes it stick. Match the writing to their demonstrated level:
+plain language with a concrete anchor for a beginner, tighter and more precise for someone
+fluent. The factual parts are still subject to verification, and if a use case is a guess,
+mark it. If the entry runs long, write it to a Markdown file they can keep (per the file
+rule below); it becomes the seed of the journal's "in one line," "why it exists," and
+"where else it shows up" fields.
+
 ## Offer to go one layer deeper — but ask first
 
 Many topics have a lower layer where the real mental model lives: the kernel call

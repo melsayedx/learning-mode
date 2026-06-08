@@ -24,6 +24,10 @@ sources: [<url-or-source>, <url-or-source>]
 ## Why it exists
 <The problem it solves — the general-model beat, in one short paragraph.>
 
+## Where else it shows up
+<Other real use cases for this concept — the breadth from the mini-wiki entry, so it's
+recorded as a general pattern, not a one-off. Mark anything unverified.>
+
 ## Naive vs production
 <The key contrasts learned. For each: the naive approach, the failure it hits, and the
 production fix — with the *why*, and a source for the production claim.>

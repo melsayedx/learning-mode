@@ -41,6 +41,21 @@ polling, no rate-limit pressure. That is why webhooks exist, and it's true of an
 event-notification system, not just Stripe (the general model). Note the contrast with a
 cold lecture: you didn't open with "webhooks are a push mechanism," they earned it.
 
+### Crystallize it — the "Webhooks" entry
+
+Before moving on, lock the concept in with a compact mini-wiki entry — and do this whether
+or not they reached "webhook" themselves, because the aha isn't the same as a precise
+definition or knowing where else it's used. Pitched to a beginner:
+
+> **Webhooks** — a server *pushing* you an event by making an HTTP request to a URL you
+> registered with it, instead of your app repeatedly asking. **Why it exists:** polling
+> wastes requests and adds latency; the source knows the instant something happens, so it
+> tells you. **Where else it shows up:** GitHub firing your CI pipeline on a push,
+> Slack/Discord bots receiving messages, shipping carriers posting delivery updates — the
+> same push-on-event pattern, not a Stripe-only trick.
+
+For someone fluent you'd compress this to a line and move straight to the divergences.
+
 ### Beat 3 — Now implement it, naively
 
 With webhooks motivated, have them sketch their first handler. Most people land on:
@@ -144,12 +159,13 @@ The Stripe specifics are incidental; the arc is the reusable part.
 
 1. **Let the naive solution fail first** — have them solve the problem the obvious way (here, polling) and feel where it breaks, before the new technology is named.
 2. **The failure motivates the technology** — the wall they just hit is *why* the thing exists; name the general model now that they've earned it.
-3. **Implement it naively** — have them build the obvious first version with the new tool, and name why it's tempting.
-4. **Each production divergence** — lead with the failure it prevents, surface it with a question, let them implement the fix, and ground the *why* in a real source (official docs or a real production practice), flagging anything you can't verify. Some walls they'll feel; others you'll have to pose.
-5. **Deep-dive offers** — name the layer beneath and let them choose to enter it.
-6. **Test elicitation** — they generate the cases; push them toward testing empirically with real tooling.
+3. **Crystallize it into a titled entry** — once the concept is named, lock it in with a compact mini-wiki entry (definition, why it exists, where else it shows up), pitched to their level. Do this whether or not they reached it themselves — the aha isn't the same as a precise definition and the breadth of where the idea is used.
+4. **Implement it naively** — have them build the obvious first version with the new tool, and name why it's tempting.
+5. **Each production divergence** — lead with the failure it prevents, surface it with a question, let them implement the fix, and ground the *why* in a real source (official docs or a real production practice), flagging anything you can't verify. Some walls they'll feel; others you'll have to pose.
+6. **Deep-dive offers** — name the layer beneath and let them choose to enter it.
+7. **Test elicitation** — they generate the cases; push them toward testing empirically with real tooling.
 
 Whatever the topic — a database index, a consensus protocol, a rate limiter — the same
-six beats apply. The sources change (university courses and canonical texts for the
+seven beats apply. The sources change (university courses and canonical texts for the
 general model, the project's own docs for specifics, engineering blogs and real production
 code for practice); the shape does not.

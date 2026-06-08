@@ -72,10 +72,6 @@ Use the packaged `learning-mode.skill` (the skill only — the agent is Claude-C
 
 Learning Mode engages when you signal you want to *learn* rather than just ship: when you say something is new to you or it's your first time with it, when you ask to understand or study it, or when you ask how/why something works before building. It deliberately stays out of the way when you just want something built, fixed, or delivered — say "just write it" and it won't take over.
 
-## Customization
-
-- The journal location is a convention you choose: per-project `docs/learning/<date>-<topic>.md` or a global `~/learning-journal/`. Point your review routine at whichever you pick.
-
 ## Credits
 
 Built to integrate with the [superpowers](https://github.com/obra/superpowers) skill framework by Jesse Vincent. The teaching method is failure-first — let the learner try the naive approach and feel it break before the concept is named (productive failure). The verification method draws on the principle that primary sources settle claims and that running code beats reading docs for behavior.
