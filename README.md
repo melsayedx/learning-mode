@@ -1,16 +1,35 @@
 # Learning Mode
 
-A Claude Code skill (plus a companion agent) that turns Claude into a **guide, not an autocomplete**. When you're learning an unfamiliar technology, Learning Mode makes Claude explain, question, and review — but never write the implementation for you, so the understanding ends up in your head instead of in pasted code.
+A Claude Code skill (plus a companion agent) that turns Claude into a **guide, not an autocomplete**. When you're learning an unfamiliar technology — or sharpening your grip on a familiar one — Learning Mode makes Claude explain, question, and review, but never write the implementation for you. The understanding ends up in your head instead of in pasted code.
 
-It works across any domain: backend, frontend, distributed systems, databases, algorithms.
+It works across any domain — backend, frontend, distributed systems, databases, algorithms — on Claude Code, Claude Cowork, and claude.ai.
 
-## What makes it different
+## What it's for
 
-- **Hard no-implementation rule.** Claude does not write the code, config, schema, or commands that constitute the solution. You type every line that counts. Claude gives graduated hints, reviews what you wrote, and corrects it Socratically — it never hands back a finished version.
-- **Failure-first, so the "why" is earned.** Instead of lecturing, it has you try the obvious naive solution first and feel where it breaks — and *that* failure is what introduces the technology. Then it contrasts the naive implementation with the production approach, grounded in **real, cited industry sources**, not a guess at "best practice." A learner who has felt the failure a tool prevents can adapt it later; one handed only the recipe can't.
-- **Verifies facts instead of guessing.** Factual claims about an API, library, protocol, or service are checked against authoritative primary sources (and, when possible, by running a probe) before they're stated, with a clear label for what's verified vs. reasoned vs. an analogy.
-- **Offers depth on request.** When a topic has a meaningful lower layer, Claude flags it and *asks* before diving in — no unprompted firehose.
-- **Builds a learning journal.** Each session can close with a structured journal entry (why it exists, naive-vs-production, what you built, verified facts, your own-words explanation, retrieval questions) — a record you can review and feed into a spaced-repetition or quiz routine later.
+- **Learning a new tool by building with it.** A library, framework, protocol, or service you haven't used: you implement it yourself against a real problem, hint by hint — and you end with the production-hardened version, not the tutorial version, with every divergence from the naive approach explained and sourced.
+- **Understanding pure concepts.** Topics with nothing to type — object storage, consistency models, how an algorithm really works. The same discipline applies to thinking: you derive, predict, and explain back; Claude elicits and reviews instead of lecturing.
+- **Deepening fundamentals you half-know.** The failure-first arc exposes the edges of a mental model fast: you find out precisely where your version of "how this works" stops being true.
+
+## Why this instead of "act as a tutor and don't give me the answer"?
+
+You can prompt any model into tutoring. Four things make this hold up in practice where ad-hoc prompts don't:
+
+1. **A behavioral contract that doesn't decay.** One-off instructions drift as a chat grows — the model "helps" a little more each time you struggle. This skill reloads its rules every session and names the rationalizations it must decline: *"just write it for me, just this once"*, *"I'm in a hurry"*, *"show me an example and I'll adapt it"*, *"I already understand it, just generate it"*. Its line for what Claude may write is one sentence: **if you could paste what Claude wrote and have the task done, it wrote too much.**
+2. **Verification instead of confident guessing.** Factual claims about an API, protocol, or production practice are grounded in primary sources before they're stated — official docs, specs, canonical texts, real industry code — with explicit labels separating *verified* from *reasoned* from *analogy*. A read-only **doc-verifier** subagent runs the lookups in its own forked context, so your session stays clean and the verdict comes back cited.
+3. **Memory that survives the session.** Every session keeps a structured journal as it goes — updated at milestones, like a write-ahead log — and closes with a final pass that formats the entry and verifies its claims. A crashed, compacted, or abandoned session resumes in a fresh conversation from its `in-progress` entry, so you never re-explain what you were learning.
+4. **Pedagogy encoded from learning science, not vibes.** The session shape implements specific, well-evidenced techniques — below — rather than a generic "be Socratic" instruction.
+
+Against the broader alternatives: a tutorial is consumption — fluent to read, gone in a week. Flashcards retain facts you already understand. Learning Mode is for *constructing* understanding; its journals then feed whatever retention routine you run on top.
+
+## The learning science inside
+
+- **Productive failure.** You attempt the obvious naive solution first and feel exactly where it breaks; the technology is introduced *by* that failure, so the "why" is earned rather than lectured.
+- **Guided inquiry, not pure discovery.** Unguided struggle is well documented to fail for novices, so a four-rung hint ladder climbs from "what have you tried?" to a near-complete hint — one rung at a time, never skipping to the bottom.
+- **The worked-example floor (expertise reversal).** True novices learn faster from studying a worked solution than from open-ended struggle — so when the ladder bottoms out, Claude walks one fully worked *analogous* problem, never the target, then returns you to yours.
+- **Generation and retrieval practice.** You write every line that counts and you design the tests; each journal stores retrieval questions for later self-testing, because testing beats re-reading for retention.
+- **Self-explanation.** Every arc ends with you explaining the idea back in your own words — and the gaps in that explanation are the honest signal of what isn't understood yet.
+- **Consolidation.** Once a concept is earned, it's crystallized into a titled mini-wiki entry — a precise definition, why it exists tied to the failure you just felt, and where else it shows up — so the aha resolves into something you keep, whether or not you reached the concept yourself.
+- **Fading scaffolding.** Support tracks demonstrated competence, not how much you ask: more hints early, longer struggle once you're self-correcting.
 
 ## What's included
 
@@ -67,6 +86,12 @@ Restart Claude Code to load the agent.
 ### Option C — As a `.skill` on claude.ai
 
 Use the packaged `learning-mode.skill` (the skill only — the agent is Claude-Code-specific) and upload it in claude.ai under Settings → Capabilities → Skills.
+
+## Where journals go — and one line to make it bulletproof
+
+The skill writes a per-session learning journal as you go, to one consistent location you choose: per project at `docs/learning/<date>-<topic>.md`, or a global folder like `~/.claude/learning-journal/`. If it's unsure you want one, it asks. An entry left `in-progress` is also the resume checkpoint a fresh session restores from.
+
+To make retrieval bulletproof, put a single line in your `CLAUDE.md` naming your journal location — e.g. `Learning journals live in ~/.claude/learning-journal/`. `CLAUDE.md` loads every session, so any fresh Claude knows where memory lives without guessing between the per-project and global conventions.
 
 ## How it triggers
 
