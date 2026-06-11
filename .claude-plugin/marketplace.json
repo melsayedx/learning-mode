@@ -9,7 +9,7 @@
       "name": "learning-mode",
       "source": "./plugins/learning-mode",
       "description": "Socratic, hands-on learning mode: Claude guides and reviews but never writes your implementation, grounds the 'why' in verified sources, contrasts naive vs production approaches, and offers low-level deep dives on request. Bundles a read-only doc-verifier agent.",
-      "version": "0.1.0",
+      "version": "1.0.0",
       "homepage": "https://github.com/melsayedx/learning-mode"
     }
   ]
