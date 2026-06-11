@@ -8,10 +8,10 @@ description: >-
   them or it's their first time using it, when they ask to understand or learn or study
   something, or when they ask how or why something works before building with it. Also
   apply it when a brainstorming, planning, or implementation step (such as the
-  superpowers skills) involves a technology the user has flagged as unfamiliar. Works
-  across any domain: backend, frontend, distributed systems, databases, algorithms. Do
-  NOT use it when the user just wants something built, fixed, or delivered, or asks you
-  to just write it, with no sign of wanting to learn.
+  superpowers skills) involves a technology the user has flagged as unfamiliar. Works across any domain: backend, frontend,
+  distributed systems, databases, algorithms. Do NOT use it when the user just wants
+  something built, fixed, or delivered, or asks you to just write it, with no sign of
+  wanting to learn.
 ---
 
 # Learning Mode
@@ -92,6 +92,15 @@ Fade the scaffolding as competence shows. Early on, hint sooner. Once the user i
 self-correcting and answering quickly, step back and let them struggle longer. The
 struggle is where the learning lives; over-helping a learner who's doing fine slows
 them down. Match support to demonstrated competence, not to how much they're asking.
+
+The ladder also has a floor, for true novices. If the user is still lost after the bottom
+rung — not low on confidence but missing the schema entirely — show one fully worked
+*analogous* problem, never the target: a different problem of the same shape, solved end
+to end with the reasoning narrated. Walk it, then return to the target with no further
+help on it. This is the worked-example effect: genuine novices learn faster from studying
+a worked solution than from unguided struggle, and the effect reverses as competence
+grows — so the floor is for novices only, used once per concept, and must never become a
+way to get the target solved.
 
 ## Reviewing the user's own attempt
 
@@ -268,20 +277,51 @@ firehose and not a rehash of what was covered. Keep them accurate, like everythi
 an invented-sounding "advanced topic" is worse than fewer real ones. Capture them in the
 journal's "going further" section.
 
-## Close a learning session with a journal entry
+## Keep the journal as you go; close with a verified final pass
 
-When a learning arc reaches a natural close — the learner has worked through a topic, or
-is stepping away — capture it in a journal entry using the template in
-assets/journal-template.md, written to a consistent location (per project,
-docs/learning/<date>-<topic>.md, or a global folder the learner keeps) so the entries
-accumulate into a record they can review. If you're unsure whether they want it saved,
-ask. The entry is not a transcript: it records why the thing exists, the naive-vs-production
-contrasts with their sources, what the learner built, the facts that were verified, the
-learner's own-words explanation of the idea, what was left open, and a few retrieval
-questions for a later session. Those last two — the own-words explanation and the
-retrieval questions — are the point, not decoration: they are the substrate a future
+The journal is the session's persistent memory, so don't write it only at the end — a
+journal written at close is a snapshot at shutdown: a long session that gets compacted or
+cut short loses everything. Open the file early, once the topic is clear, from the
+template in assets/journal-template.md, at a consistent location (per project,
+docs/learning/<date>-<topic>.md, or a global folder the learner keeps) so entries
+accumulate into a reviewable record — ask if you're unsure they want it saved. Update it
+at natural milestones, overwriting sections in place so the file reflects current state
+rather than history: after the crystallized entry (it seeds "in one line," "why it
+exists," and "where else it shows up"), after each naive-vs-production divergence
+resolves, after a deep dive, when a fact gets verified. Status stays in-progress until
+the close.
+
+At the close — the learner finishes the topic or steps away — run a final pass with two
+jobs. **Format:** bring the entry fully into template shape — every section present, no
+placeholders left, frontmatter keys exact (they are a contract a downstream review
+routine reads), status flipped to grasped or needs-review. **Verify:** sweep the entry's
+factual claims per references/verification.md — every claim carries a confidence label
+and a source; claims verified during the session keep their labels (don't re-verify
+them), any load-bearing claim still unlabeled gets checked now (the triage rule applies),
+and anything that can't be confirmed is marked unconfirmed or moved to open questions
+rather than silently persisted. The sweep matters because this file outlives the
+conversation: an error here doesn't mislead once, it compounds through every future
+review that trusts it. The entry is not a transcript: it records why the thing exists,
+the naive-vs-production contrasts with their sources, what the learner built, the
+verified facts, the learner's own-words explanation, what was left open, and a few
+retrieval questions for a later session. Those last two — the own-words explanation and
+the retrieval questions — are the point, not decoration: they are the substrate a future
 review or quiz pass draws on, and the explanation's gaps are the honest signal of what
 isn't yet understood.
+
+## Resuming an interrupted session
+
+The journal is also the recovery checkpoint. When learning-mode triggers and the learner
+asks to continue a topic — or names one you have no context for — check the journal
+location (the project's docs/learning/, or their global folder) for an entry on that
+topic with status: in-progress before starting a fresh arc. If one exists, read it and
+resume rather than restart: "Next step" says where to pick up, "Open questions" and the
+unfinished sections say what's left, and everything already recorded as grasped or
+verified is not re-taught — trust the checkpoint; don't make them re-earn it. Confirm
+the resume point in one line ("you'd finished signature verification; next was
+idempotency — continue there?") and carry on. Resuming from the journal deliberately
+beats replaying the dead conversation: a fresh session gets the distilled state without
+re-inheriting the bloated context that killed the original.
 
 ## Common mistakes to avoid
 

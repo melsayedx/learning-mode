@@ -1,12 +1,17 @@
 <!--
-This is a fill-in template the learning-mode skill instantiates at the close of a
-learning session. Copy it to a new dated file (see "Where this goes") and replace every
-<placeholder>. The frontmatter keys are a STABLE CONTRACT: a downstream review or quiz
-routine reads them, so keep the key names exactly as written.
+This is a fill-in template the learning-mode skill opens EARLY in a learning session —
+once the topic is clear — and updates at milestones, overwriting sections in place
+(status: in-progress). The close is a final pass that formats the entry and verifies its
+factual claims per references/verification.md, then flips status. An entry left
+in-progress is the resume checkpoint: a future session reads it to continue where this
+one stopped. Copy it to a new dated
+file (see "Where this goes") and replace every <placeholder>. The frontmatter keys are a
+STABLE CONTRACT: a downstream review or quiz routine reads them, so keep the key names
+exactly as written.
 
 Where this goes — pick ONE location and keep it consistent so a review routine can scan it:
   Per project:  docs/learning/<YYYY-MM-DD>-<topic-slug>.md
-  Global:       ~/learning-journal/<YYYY-MM-DD>-<topic-slug>.md
+  Global:       ~/.claude/learning-journal/<YYYY-MM-DD>-<topic-slug>.md
 -->
 
 ---
