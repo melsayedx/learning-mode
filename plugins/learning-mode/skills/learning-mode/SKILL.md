@@ -282,9 +282,15 @@ journal's "going further" section.
 The journal is the session's persistent memory, so don't write it only at the end — a
 journal written at close is a snapshot at shutdown: a long session that gets compacted or
 cut short loses everything. Open the file early, once the topic is clear, from the
-template in assets/journal-template.md, at a consistent location (per project,
-docs/learning/<date>-<topic>.md, or a global folder the learner keeps) so entries
-accumulate into a reviewable record — ask if you're unsure they want it saved. Update it
+template in assets/journal-template.md, at ~/.claude/learning-journal/<date>-<topic>.md
+(resolve ~ to the user's home directory on whatever OS this is) —
+one global location, so entries accumulate into a single reviewable record and never end
+up committed into a project's repo. A project can override this with a CLAUDE.md line
+naming its own journal folder. Ask if you're unsure they want one saved. If permissions
+block writing outside the project, never silently relocate the journal: tell the user
+about the one-time setup (add ~/.claude/learning-journal to permissions →
+additionalDirectories in ~/.claude/settings.json) and only with their OK fall back to
+./.claude/learning-journal/ inside the project. Update it
 at natural milestones, overwriting sections in place so the file reflects current state
 rather than history: after the crystallized entry (it seeds "in one line," "why it
 exists," and "where else it shows up"), after each naive-vs-production divergence
@@ -312,9 +318,9 @@ isn't yet understood.
 ## Resuming an interrupted session
 
 The journal is also the recovery checkpoint. When learning-mode triggers and the learner
-asks to continue a topic — or names one you have no context for — check the journal
-location (the project's docs/learning/, or their global folder) for an entry on that
-topic with status: in-progress before starting a fresh arc. If one exists, read it and
+asks to continue a topic — or names one you have no context for — check
+~/.claude/learning-journal/ (or a folder the project's CLAUDE.md names instead) for an
+entry on that topic with status: in-progress before starting a fresh arc. If one exists, read it and
 resume rather than restart: "Next step" says where to pick up, "Open questions" and the
 unfinished sections say what's left, and everything already recorded as grasped or
 verified is not re-taught — trust the checkpoint; don't make them re-earn it. Confirm

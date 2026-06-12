@@ -87,11 +87,26 @@ Restart Claude Code to load the agent.
 
 Use the packaged `learning-mode.skill` (the skill only — the agent is Claude-Code-specific) and upload it in claude.ai under Settings → Capabilities → Skills.
 
-## Where journals go — and one line to make it bulletproof
+## Where journals go
 
-The skill writes a per-session learning journal as you go, to one consistent location you choose: per project at `docs/learning/<date>-<topic>.md`, or a global folder like `~/.claude/learning-journal/`. If it's unsure you want one, it asks. An entry left `in-progress` is also the resume checkpoint a fresh session restores from.
+The skill writes a per-session learning journal as it goes, to one global location: `~/.claude/learning-journal/<date>-<topic>.md`. One directory means a review routine scans a single place, and journals never end up accidentally committed into a project's repo. If the skill is unsure you want one, it asks. An entry left `in-progress` is also the resume checkpoint a fresh session restores from.
 
-To make retrieval bulletproof, put a single line in your `CLAUDE.md` naming your journal location — e.g. `Learning journals live in ~/.claude/learning-journal/`. `CLAUDE.md` loads every session, so any fresh Claude knows where memory lives without guessing between the per-project and global conventions.
+If you want a specific project to keep its own journals instead, say so in that project's `CLAUDE.md` — e.g. `Learning journals for this repo live in docs/learning/`. `CLAUDE.md` loads every session, so the override is always seen.
+
+**One-time setup (Claude Code):** by default Claude Code can only write inside the current working directory, so writing the journal to `~/.claude/learning-journal/` needs a one-time grant in `~/.claude/settings.json`:
+
+```json
+{
+  "permissions": {
+    "additionalDirectories": ["~/.claude/learning-journal"],
+    "allow": ["Edit(~/.claude/learning-journal/**)"]
+  }
+}
+```
+
+Keep the rule scoped to `learning-journal/` only — never allow all of `~/.claude/**`, which holds your settings and hooks. Without this grant, the skill will tell you writing is blocked and ask before falling back to `./.claude/learning-journal/` inside the project.
+
+**Platforms:** works on macOS, Linux, and native Windows (Claude Code resolves `~` to your home — `C:\Users\<you>\.claude\` on Windows). If `~` doesn't expand in your Windows permission rules, use the absolute path instead: `"C:\\Users\\<you>\\.claude\\learning-journal"`. Under WSL, Claude Code behaves as Linux, so journals live in your WSL home. On claude.ai (uploaded `.skill`), there's no home directory on your machine — the journal is created in the session workspace for you to download, and cross-session resume from disk is a Claude Code feature.
 
 ## How it triggers
 

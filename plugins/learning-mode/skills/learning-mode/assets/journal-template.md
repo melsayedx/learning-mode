@@ -9,9 +9,9 @@ file (see "Where this goes") and replace every <placeholder>. The frontmatter ke
 STABLE CONTRACT: a downstream review or quiz routine reads them, so keep the key names
 exactly as written.
 
-Where this goes — pick ONE location and keep it consistent so a review routine can scan it:
-  Per project:  docs/learning/<YYYY-MM-DD>-<topic-slug>.md
-  Global:       ~/.claude/learning-journal/<YYYY-MM-DD>-<topic-slug>.md
+Where this goes — one global location, so a review routine scans a single directory:
+  ~/.claude/learning-journal/<YYYY-MM-DD>-<topic-slug>.md
+  (a project may override this via a CLAUDE.md line naming its own journal folder)
 -->
 
 ---
