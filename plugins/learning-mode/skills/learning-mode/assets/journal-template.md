@@ -42,6 +42,14 @@ production fix — with the *why*, and a source for the production claim.>
 ## What I built
 <What *I* actually implemented or worked through this session — not what Claude wrote.>
 
+## Diagrams
+<Visuals that helped — preferably the ones I drew. Embed Mermaid inline as a ```mermaid
+block so it stays in this file; for a rendered image, link it relatively with a caption.>
+
+```mermaid
+%% <e.g. the flow / state machine I worked out — replace with the real diagram, or delete this section if none>
+```
+
 ## Verified facts (with sources)
 <Each fact labeled, so the review routine knows what is checkable truth versus a teaching
 device. Mirrors the skill's confidence labels.>

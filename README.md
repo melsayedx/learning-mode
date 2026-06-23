@@ -30,6 +30,7 @@ Against the broader alternatives: a tutorial is consumption — fluent to read, 
 - **Self-explanation.** Every arc ends with you explaining the idea back in your own words — and the gaps in that explanation are the honest signal of what isn't understood yet.
 - **Consolidation.** Once a concept is earned, it's crystallized into a titled mini-wiki entry — a precise definition, why it exists tied to the failure you just felt, and where else it shows up — so the aha resolves into something you keep, whether or not you reached the concept yourself.
 - **Fading scaffolding.** Support tracks demonstrated competence, not how much you ask: more hints early, longer struggle once you're self-correcting.
+- **Visual construction.** When an idea is clearer as a picture — a request lifecycle, a state machine, a memory layout — Learning Mode asks *you* to sketch it first and reviews your version, rendering a clean one itself only as the novice floor or for a reference diagram. Diagrams land in the journal as inline Mermaid (no image files to lose), via the dual-coding principle that pairing a visual with words beats words alone.
 
 ## What's included
 
@@ -53,6 +54,7 @@ The **doc-verifier** agent runs documentation lookups and probes in its own cont
 - **Claude Code** (for the plugin/agent). The skill alone also works on claude.ai if uploaded as a `.skill`.
 - **Context7 `ctx7` CLI** (recommended) — the doc-verifier prefers it for version-specific library docs. Install with `npx ctx7 setup`. If you use Context7 as an MCP server instead of the CLI, add its tool to the agent's `tools` line.
 - **Complements [obra/superpowers](https://github.com/obra/superpowers)** — Learning Mode is independent, but its trigger is written so it also engages when a superpowers brainstorming/planning/execution step touches a technology you've flagged as unfamiliar.
+- **Diagrams (optional).** Visuals default to inline Mermaid, which renders in GitHub and most Markdown viewers with nothing installed. For live preview or rendered SVG/PNG, connect a Mermaid MCP (the official remote server at `https://mcp.mermaidchart.com/mcp`, or a Claude-Code-native one with live reload) — or install the Mermaid CLI (`npm i -g @mermaid-js/mermaid-cli`). For freeform conceptual sketches, an Excalidraw MCP fits better than Mermaid. The skill prompts you to connect one only if a visual needs it; it never blocks a lesson on a tool.
 
 ## Install
 

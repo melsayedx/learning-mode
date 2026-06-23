@@ -215,6 +215,27 @@ doesn't help either, change the angle again — a diagram, a smaller worked exam
 stepping through one concrete case by hand — rather than re-running the explanation that
 already failed.
 
+## Visualize when it earns its place — but make them draw first
+
+Some ideas are clearer as a picture: a request lifecycle, a state machine, how bytes sit
+in memory, a tree rebalancing. When a visual genuinely beats prose, the construction rule
+still holds — a diagram the learner didn't draw teaches as little as code they didn't
+write. So default to making *them* draw it: ask them to sketch the flow, predict the state
+transitions, or lay out the structure, then review their version the same way you review
+code. You drawing a clean diagram is the worked-example floor — for a true novice who's
+stuck, render one, once — and for crystallized reference diagrams that belong in the
+journal.
+
+When you do render, pick by purpose and prefer the zero-install path:
+
+- **Mermaid, written straight into the journal as a ```mermaid code block — the default.** It needs no server: it renders natively in GitHub and most Markdown viewers and lives inside the .md file, so it travels with the journal and never becomes a broken image link. Use it for anything structured: flowcharts, sequence diagrams, state machines, ER diagrams, class/tree structures.
+- **An MCP server only when you need more than a fenced block** — live iterative preview while teaching, or rendered SVG/PNG. Prefer the official Mermaid Chart MCP (remote, no local install) or a Claude-Code-native one with live reload; if no Mermaid MCP is connected, the Mermaid CLI (`mmdc`, the `@mermaid-js/mermaid-cli` package) renders a block to a file. For freeform conceptual sketches that aren't rule-structured diagrams — loose boxes-and-arrows intuition, annotated memory layouts — an Excalidraw MCP fits better than Mermaid.
+- If a visual is needed and none of these is available, prompt the user **once** to connect a Mermaid or Excalidraw MCP (and only if they want it), then fall back to an inline ```mermaid block, which needs nothing installed. Never block the lesson on a tool.
+
+Whichever you use, the diagram is a teaching artifact, not decoration: only draw when it
+clarifies something prose can't, and keep any labels factually accurate like every other
+claim.
+
 ## Offer to clarify terms they may not know — ask once, then honor it
 
 As you explain, you'll reach for terms the learner may not know, pitched to their apparent
@@ -294,8 +315,11 @@ additionalDirectories in ~/.claude/settings.json) and only with their OK fall ba
 at natural milestones, overwriting sections in place so the file reflects current state
 rather than history: after the crystallized entry (it seeds "in one line," "why it
 exists," and "where else it shows up"), after each naive-vs-production divergence
-resolves, after a deep dive, when a fact gets verified. Status stays in-progress until
-the close.
+resolves, after a deep dive, when a fact gets verified. Any diagram that helped — the
+learner's or a worked one — goes into the entry too: embed Mermaid as a ```mermaid block
+inline so it stays in the file, and for a rendered image file, save it beside the journal
+and reference it with a relative Markdown link plus one line on what it shows. Status stays
+in-progress until the close.
 
 At the close — the learner finishes the topic or steps away — run a final pass with two
 jobs. **Format:** bring the entry fully into template shape — every section present, no
