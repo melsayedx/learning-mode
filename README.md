@@ -93,7 +93,7 @@ The **doc-verifier** agent runs documentation lookups and probes in its own cont
 
 ## Requirements & companions
 
-- **Claude Code** (for the plugin and companion agent). Claude.ai can use the skill-only ZIP described below.
+- **Claude Code** (for the plugin and companion agent).
 - **Context7 `ctx7` CLI** (recommended) — the doc-verifier prefers it for version-specific library docs. Install with `npx ctx7 setup`. If you use Context7 as an MCP server instead of the CLI, add its tool to the agent's `tools` line.
 - **Complements [obra/superpowers](https://github.com/obra/superpowers)** — Learning Mode is independent, but its trigger is written so it also engages when a superpowers brainstorming/planning/execution step touches a technology you've flagged as unfamiliar.
 - **Diagrams (optional).** Visuals default to inline Mermaid, which renders in GitHub and most Markdown viewers with nothing installed. For live preview or rendered SVG/PNG, connect a Mermaid MCP (the official remote server at `https://mcp.mermaidchart.com/mcp`, or a Claude-Code-native one with live reload) — or install the Mermaid CLI (`npm i -g @mermaid-js/mermaid-cli`). For freeform conceptual sketches, an Excalidraw MCP fits better than Mermaid. The skill prompts you to connect one only if a visual needs it; it never blocks a lesson on a tool.
