@@ -1,17 +1,14 @@
 <!--
-This is a fill-in template the learning-mode skill opens EARLY in a learning session —
-once the topic is clear — and updates at milestones, overwriting sections in place
-(status: in-progress). The close is a final pass that formats the entry and verifies its
-factual claims per references/verification.md, then flips status. An entry left
-in-progress is the resume checkpoint: a future session reads it to continue where this
-one stopped. Copy it to a new dated
-file (see "Where this goes") and replace every <placeholder>. The frontmatter keys are a
-STABLE CONTRACT: a downstream review or quiz routine reads them, so keep the key names
-exactly as written.
+Fill-in template the learning-mode skill opens early in a session and updates at
+milestones; the close is a verified final pass. The skill defines the full lifecycle —
+including that the TL;DR is written last, after verification. Replace every
+<placeholder>. The frontmatter keys are a STABLE CONTRACT: a downstream review or quiz
+routine reads them, so keep the key names exactly as written.
 
-Where this goes — one global location, so a review routine scans a single directory:
-  ~/.claude/learning-journal/<YYYY-MM-DD>-<topic-slug>.md
-  (a project may override this via a CLAUDE.md line naming its own journal folder)
+Where this goes — one global root, one folder per session so a journal keeps its diagrams
+and artifacts beside it:
+  ~/.claude/learning-journal/<YYYY-MM-DD>-<topic-slug>/journal.md
+  (a project may override the root via a CLAUDE.md line)
 -->
 
 ---
@@ -23,8 +20,13 @@ tags: [<keyword>, <keyword>]
 sources: [<url-or-source>, <url-or-source>]
 ---
 
+## TL;DR
+<!-- Filled at the close, after the verify sweep — 2-4 sentences; see the skill's closing pass. -->
+<placeholder — filled at close>
+
 ## In one line
-<What this session was about.>
+<What this session was about — one sentence; seeds the frontmatter and the TL;DR.>
+
 
 ## Why it exists
 <The problem it solves — the general-model beat, in one short paragraph.>
@@ -43,8 +45,8 @@ production fix — with the *why*, and a source for the production claim.>
 <What *I* actually implemented or worked through this session — not what Claude wrote.>
 
 ## Diagrams
-<Visuals that helped — preferably the ones I drew. Embed Mermaid inline as a ```mermaid
-block so it stays in this file; for a rendered image, link it relatively with a caption.>
+<Visuals that helped — preferably the ones I drew. Inline ```mermaid blocks; rendered
+images linked relatively with a caption.>
 
 ```mermaid
 %% <e.g. the flow / state machine I worked out — replace with the real diagram, or delete this section if none>

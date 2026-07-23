@@ -166,8 +166,7 @@ productive failure that makes it stick. Match the writing to their demonstrated 
 plain language with a concrete anchor for a beginner, tighter and more precise for someone
 fluent. The factual parts are still subject to verification, and if a use case is a guess,
 mark it. If the entry runs long, write it to a Markdown file they can keep (per the file
-rule below); it becomes the seed of the journal's "in one line," "why it exists," and
-"where else it shows up" fields.
+rule below); it seeds the journal.
 
 ## Offer to go one layer deeper — but ask first
 
@@ -303,9 +302,11 @@ journal's "going further" section.
 The journal is the session's persistent memory, so don't write it only at the end — a
 journal written at close is a snapshot at shutdown: a long session that gets compacted or
 cut short loses everything. Open the file early, once the topic is clear, from the
-template in assets/journal-template.md, at ~/.claude/learning-journal/<date>-<topic>.md
-(resolve ~ to the user's home directory on whatever OS this is) —
-one global location, so entries accumulate into a single reviewable record and never end
+template in assets/journal-template.md, at
+~/.claude/learning-journal/<date>-<topic>/journal.md — one folder per session
+(resolve ~ to the user's home directory on whatever OS this is), so each journal keeps its
+diagrams and any rendered artifacts beside it and entries accumulate into a single
+reviewable record that never ends
 up committed into a project's repo. A project can override this with a CLAUDE.md line
 naming its own journal folder. Ask if you're unsure they want one saved. If permissions
 block writing outside the project, never silently relocate the journal: tell the user
@@ -317,9 +318,9 @@ rather than history: after the crystallized entry (it seeds "in one line," "why 
 exists," and "where else it shows up"), after each naive-vs-production divergence
 resolves, after a deep dive, when a fact gets verified. Any diagram that helped — the
 learner's or a worked one — goes into the entry too: embed Mermaid as a ```mermaid block
-inline so it stays in the file, and for a rendered image file, save it beside the journal
-and reference it with a relative Markdown link plus one line on what it shows. Status stays
-in-progress until the close.
+inline so it stays in the file, and for a rendered image file, save it in the session
+folder beside journal.md and reference it with a relative Markdown link plus one line on
+what it shows. Status stays in-progress until the close.
 
 At the close — the learner finishes the topic or steps away — run a final pass with two
 jobs. **Format:** bring the entry fully into template shape — every section present, no
@@ -331,11 +332,13 @@ them), any load-bearing claim still unlabeled gets checked now (the triage rule 
 and anything that can't be confirmed is marked unconfirmed or moved to open questions
 rather than silently persisted. The sweep matters because this file outlives the
 conversation: an error here doesn't mislead once, it compounds through every future
-review that trusts it. The entry is not a transcript: it records why the thing exists,
-the naive-vs-production contrasts with their sources, what the learner built, the
-verified facts, the learner's own-words explanation, what was left open, and a few
-retrieval questions for a later session. Those last two — the own-words explanation and
-the retrieval questions — are the point, not decoration: they are the substrate a future
+review that trusts it. **Summarize last:** only after the verify sweep, write the TL;DR
+(2-4 sentences at the top — what this was, the one insight that matters, and whether it's
+grasped or needs review). It sits at the top for fast review but is authored at the very
+end, because a summary written before verification can assert what the sweep would have
+caught — so it must summarize the verified state, never precede it. The entry is not a transcript — the template's
+sections are the record. The own-words explanation and the retrieval questions are the
+point, not decoration: they are the substrate a future
 review or quiz pass draws on, and the explanation's gaps are the honest signal of what
 isn't yet understood.
 
@@ -343,8 +346,8 @@ isn't yet understood.
 
 The journal is also the recovery checkpoint. When learning-mode triggers and the learner
 asks to continue a topic — or names one you have no context for — check
-~/.claude/learning-journal/ (or a folder the project's CLAUDE.md names instead) for an
-entry on that topic with status: in-progress before starting a fresh arc. If one exists, read it and
+~/.claude/learning-journal/ (or a folder the project's CLAUDE.md names instead) for a
+session folder on that topic whose journal.md has status: in-progress before starting a fresh arc. If one exists, read it and
 resume rather than restart: "Next step" says where to pick up, "Open questions" and the
 unfinished sections say what's left, and everything already recorded as grasped or
 verified is not re-taught — trust the checkpoint; don't make them re-earn it. Confirm
