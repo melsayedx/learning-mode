@@ -2,11 +2,11 @@
 
 ## How to use this file
 
-This is an **exemplar of the method**, not a script. It shows how to run one topic
-through the learning-mode arc end to end — why the thing exists, the naive approach, each
-production divergence with a *sourced* reason, where to offer a deeper dive, and how to
-get the learner to generate the tests. Do not paste it at the learner or walk them
-through it top to bottom; use it as the shape to follow while *they* build.
+This is an **exemplar of one possible learning path**, not a mandatory script. Use it
+after guided-learning intent, one outcome, and the smallest relevant prerequisite have
+been established. It shows how to use a failure-first arc when a meaningful naive
+approach helps reveal why the technology exists. Do not force this arc onto small syntax
+questions or topics where a direct checkpoint is clearer.
 
 It also models the rules the skill insists on: the production claims below are grounded in
 Stripe's official documentation (docs.stripe.com/webhooks), each divergence leads with the
@@ -19,8 +19,10 @@ against Stripe's docs at authoring time; re-verify against current docs before t
 ## Example: Stripe webhooks (backend)
 
 The learner says webhooks are new to them and they want to handle Stripe payment events.
-Run the arc. Throughout: you ask and they build — none of the fixes below are code you
-write for them.
+First define one outcome and check the smallest prerequisite, such as whether they can
+trace an incoming HTTP request through their framework. Then run the applicable parts of
+the arc. Throughout: they own the webhook design and implementation; the assistant may
+handle unrelated scaffolding.
 
 ### Beat 1 — Let the naive solution fail first
 
@@ -43,9 +45,9 @@ cold lecture: you didn't open with "webhooks are a push mechanism," they earned 
 
 ### Crystallize it — the "Webhooks" entry
 
-Before moving on, lock the concept in with a compact mini-wiki entry — and do this whether
-or not they reached "webhook" themselves, because the aha isn't the same as a precise
-definition or knowing where else it's used. Pitched to a beginner:
+If this is a substantial new concept and consolidation would help, lock it in with a
+compact mini-wiki entry after the learner explains it in their own words. Pitched to a
+beginner:
 
 > **Webhooks** — a server *pushing* you an event by making an HTTP request to a URL you
 > registered with it, instead of your app repeatedly asking. **Why it exists:** polling
@@ -140,30 +142,35 @@ At a natural pause, once the arc above is solid, offer these — and only if the
 - **The replay-attack defense:** the timestamp is part of the signed payload, libraries default to a five-minute tolerance, and a tolerance of 0 disables the check entirely. Good for a learner who asks "what stops someone replaying a captured event?"
 - **At-least-once delivery and the transaction boundary:** why a queue buys you at-least-once and not exactly-once, and why that pushes idempotency down into the database.
 
-### Make them generate the tests
+### Validate the outcome
 
-Don't hand them a list. Ask "what could go wrong with this handler?" and build it
-together, steering toward the cases they miss: a duplicate `event.id`; out-of-order
+Restate the selected outcome and ask the learner which evidence would demonstrate it.
+Don't hand them a finished list. Ask "what could go wrong with this handler?" and build
+the cases together, steering toward gaps they miss: a duplicate `event.id`; out-of-order
 events; a forged or malformed signature; middleware that mutated the raw body (so
-verification fails for a *correct* payload); a slow downstream causing a timeout; an event
-type you don't handle. Then point them at the real tooling so they test empirically rather
-than hypothetically: `stripe listen --forward-to localhost:<port>/webhook` to forward real
-events locally, and `stripe trigger payment_intent.succeeded` to fire one. Watching a real
-duplicate or a real signature failure teaches more than reasoning about it.
+verification fails for a *correct* payload); a slow downstream causing a timeout; an
+event type they don't handle.
+
+Then point them at the real tooling so they validate empirically rather than
+hypothetically: `stripe listen --forward-to localhost:<port>/webhook` to forward real
+events locally, and `stripe trigger payment_intent.succeeded` to fire one. Compare each
+observed result with the learner's prediction. A failure returns to revision; a pass
+records evidence for those cases only, not universal correctness.
 
 ---
 
-## Reusing this shape for any topic
+## Reusing this shape when it fits
 
-The Stripe specifics are incidental; the arc is the reusable part.
+The Stripe specifics are incidental. Use the following arc only when it fits the chosen
+outcome and prerequisite check.
 
 1. **Let the naive solution fail first** — have them solve the problem the obvious way (here, polling) and feel where it breaks, before the new technology is named.
 2. **The failure motivates the technology** — the wall they just hit is *why* the thing exists; name the general model now that they've earned it.
-3. **Crystallize it into a titled entry** — once the concept is named, lock it in with a compact mini-wiki entry (definition, why it exists, where else it shows up), pitched to their level. Do this whether or not they reached it themselves — the aha isn't the same as a precise definition and the breadth of where the idea is used.
+3. **Optionally crystallize it into a titled entry** — for a substantial new concept, ask for the learner's own explanation, test transfer, then record a compact definition, why it exists, and where else it appears.
 4. **Implement it naively** — have them build the obvious first version with the new tool, and name why it's tempting.
 5. **Each production divergence** — lead with the failure it prevents, surface it with a question, let them implement the fix, and ground the *why* in a real source (official docs or a real production practice), flagging anything you can't verify. Some walls they'll feel; others you'll have to pose.
 6. **Deep-dive offers** — name the layer beneath and let them choose to enter it.
-7. **Test elicitation** — they generate the cases; push them toward testing empirically with real tooling.
+7. **Validation** — they generate the load-bearing cases, run the narrowest relevant checks, compare evidence with the outcome, and return failures to the retry loop.
 
 Whatever the topic — a database index, a consensus protocol, a rate limiter — the same
 seven beats apply. The sources change (university courses and canonical texts for the

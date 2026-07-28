@@ -4,13 +4,13 @@
     "name": "Muhammad El Sayed",
     "url": "https://github.com/melsayedx"
   },
-  "description": "A hands-on learning plugin that makes the learner write the implementation while Claude guides, verifies, and preserves progress.",
+  "description": "A hands-on learning plugin that makes the learner own one target while the assistant guides, validates, verifies, and preserves progress.",
   "plugins": [
     {
       "name": "learning-mode",
       "source": "./plugins/learning-mode",
-      "description": "Socratic, hands-on learning mode: Claude guides and reviews but never writes your implementation, grounds the 'why' in verified sources, contrasts naive vs production approaches, and offers low-level deep dives on request. Bundles a read-only doc-verifier agent.",
-      "version": "1.2.0",
+      "description": "Adaptive, hands-on learning: define one outcome, diagnose the next prerequisite, guide and validate attempts without completing the learning target, verify load-bearing claims, and optionally preserve progress.",
+      "version": "1.3.0",
       "homepage": "https://github.com/melsayedx/learning-mode"
     }
   ]

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Learning Mode"
+  short_description: "Learn by building with guided practice"
+  default_prompt: "Use $learning-mode to guide me through one learning outcome without doing the core work for me."

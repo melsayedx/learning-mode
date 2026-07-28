@@ -1,18 +1,15 @@
 <!--
-Fill-in template the learning-mode skill opens early in a session and updates at
-milestones; the close is a verified final pass. The skill defines the full lifecycle —
-including that the TL;DR is written last, after verification. Replace every
-<placeholder>. The frontmatter keys are a STABLE CONTRACT: a downstream review or quiz
-routine reads them, so keep the key names exactly as written.
+Use this template only after journaling has been enabled.
 
-Where this goes — one global root, one folder per session so a journal keeps its diagrams
-and artifacts beside it:
-  ~/.claude/learning-journal/<YYYY-MM-DD>-<topic-slug>/journal.md
-  (a project may override the root via a CLAUDE.md line)
+Default location:
+  ~/learning-journals/<YYYY-MM-DD>-<topic-slug>/journal.md
+
+Delete optional sections that did not contribute to the session. Preserve the learner's
+own words instead of polishing gaps away.
 -->
 
 ---
-topic: <short title, e.g. "Stripe webhooks">
+topic: <short title>
 domain: <backend | frontend | distributed-systems | databases | algorithms | other>
 date: <YYYY-MM-DD>
 status: <in-progress | grasped | needs-review>
@@ -20,77 +17,55 @@ tags: [<keyword>, <keyword>]
 sources: [<url-or-source>, <url-or-source>]
 ---
 
-## TL;DR
-<!-- Filled at the close, after the verify sweep — 2-4 sentences; see the skill's closing pass. -->
-<placeholder — filled at close>
+## Outcome
+<The one observable outcome selected for this learning session.>
 
-## In one line
-<What this session was about — one sentence; seeds the frontmatter and the TL;DR.>
-
-
-## Why it exists
-<The problem it solves — the general-model beat, in one short paragraph.>
-
-## Where else it shows up
-<Other real use cases for this concept — the breadth from the mini-wiki entry, so it's
-recorded as a general pattern, not a one-off. Mark anything unverified.>
-
-## Naive vs production
-<The key contrasts learned. For each: the naive approach, the failure it hits, and the
-production fix — with the *why*, and a source for the production claim.>
-
-- <naive approach> → fails because <failure> → production: <fix> — *why*: <reason> [<source>]
-
-## What I built
-<What *I* actually implemented or worked through this session — not what Claude wrote.>
-
-## Diagrams
-<Visuals that helped — preferably the ones I drew. Inline ```mermaid blocks; rendered
-images linked relatively with a caption.>
-
-```mermaid
-%% <e.g. the flow / state machine I worked out — replace with the real diagram, or delete this section if none>
-```
-
-## Verified facts (with sources)
-<Each fact labeled, so the review routine knows what is checkable truth versus a teaching
-device. Mirrors the skill's confidence labels.>
-
-- [verified] <fact> — <primary source>
-- [reasoned] <fact derived by reasoning, not stated in a doc> — <the reasoning>
-- [unconfirmed] <fact I could not verify> — <what would settle it>
-- [analogy] <any mental model used> — *teaching device, not literal*
+## Core mental model
+<The smallest accurate explanation of how the concept works and why it exists.>
 
 ## In my own words
-<My explanation of the core idea, written by me, without looking it up. Gaps here are the
-honest signal of what I don't yet understand — leave them visible rather than smoothing
-them over.>
+<The learner's explanation. Preserve unresolved gaps honestly.>
 
-## Deep dives
-- Taken: <lower-layer topics I went into>
-- Deferred: <lower-layer topics I chose to skip — candidates for a later session>
+## Attempts and corrections
+- <attempt or prediction> → <what was correct> → <gap corrected>
+
+## What I built or reasoned through
+<The artifact, decision, derivation, cases, or counterexamples produced by the learner.>
+
+## Validation evidence
+- Outcome: <the agreed observable result>
+- Check: <focused test, probe, trace, worked case, or observation>
+- Environment: <relevant version or runtime, if applicable>
+- Result: <passed | failed | partial>
+- Limits: <important behavior this evidence did not cover>
+
+## Verification
+Include only claims that required verification.
+
+- [verified] <load-bearing fact> — <primary source or focused probe>
+- [inferred] <conclusion derived from verified facts> — <reasoning>
+- [unconfirmed] <unresolved claim> — <what would settle it>
+- [teaching-device] <analogy or invented example> — <where it stops matching reality>
+
+## Transfer check
+<The changed example, transfer question, or counterexample and the learner's result.>
+
+## Application and trade-offs (optional)
+- Where I would apply this: <a realistic context or decision>
+- What alternative I considered: <another plausible approach and why>
+- When I would not use it: <the boundary, cost, or changed constraint>
 
 ## Open questions
-<Anything still unresolved, and what would answer it.>
+<What remains unresolved and what evidence or practice would answer it.>
 
-## Going further — advanced threads
-<Advanced questions or topics beyond what this session covered — what to look up to go
-deeper into this subject. Not the unresolved questions above; these are the next rung
-toward mastery, posed as prompts to investigate rather than answered here.>
-
-- <advanced thread / question>
-- <advanced thread / question>
-
-## Edge cases & tests I considered
-<The test cases and edge cases I generated for what I built.>
-
-## Retrieval questions for later
-<3–5 questions to test myself on in a future session. This is what a spaced-repetition or
-quiz routine consumes — phrase them as questions, not answers.>
-
+## Retrieval questions
 1. <question>
 2. <question>
 3. <question>
 
-## Next step
-<Where to pick this up next time.>
+## Next checkpoint
+<The smallest useful next step, or "complete" when no required work remains.>
+
+## Optional visual model
+<Add a portable diagram, table, plot, or relative image only when it preserves a
+load-bearing mental model. Include the learner's concise text explanation or alternative.>

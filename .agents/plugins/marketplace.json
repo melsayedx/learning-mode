@@ -1,0 +1,20 @@
+{
+  "name": "learning-mode-marketplace",
+  "interface": {
+    "displayName": "Learning Mode Marketplace"
+  },
+  "plugins": [
+    {
+      "name": "learning-mode",
+      "source": {
+        "source": "local",
+        "path": "./plugins/learning-mode"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}
