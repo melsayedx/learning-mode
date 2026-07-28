@@ -40,55 +40,6 @@ submission.
 
 Start a new conversation after installing or updating the plugin.
 
-## Test locally without publishing
-
-The Codex marketplace can point directly at a local clone. Nothing needs to be committed,
-pushed, or submitted to the public plugin directory.
-
-If the published marketplace is already configured, temporarily replace it because the
-published and local sources share the `learning-mode-marketplace` name:
-
-```bash
-codex plugin remove learning-mode@learning-mode-marketplace
-codex plugin marketplace remove learning-mode-marketplace
-codex plugin marketplace add "/absolute/path/to/learning-mode"
-codex plugin add learning-mode@learning-mode-marketplace
-codex plugin list
-```
-
-The local path is the repository root containing `.agents/plugins/marketplace.json`.
-Confirm that `codex plugin list` reports the expected local version, then start a new
-conversation, select Learning Mode from the `$` skill picker, and try:
-
-> Teach me React state through guided learning. Do not implement the solution for me.
-
-Smoke-test the intent routes and safety boundaries:
-
-- a quick factual question receives a direct answer;
-- a guided request follows the prerequisite, attempt, validation, and transfer flow;
-- a delivery request made during a lesson requires confirmation before mode exit;
-- journaling asks once and writes under `~/learning-journals/` only when enabled;
-- urgent security or data-loss risk receives immediate protective guidance.
-
-After changing the local plugin, update its development cache-busting version, reinstall
-it, and start another new conversation:
-
-```bash
-python3 ~/.codex/skills/.system/plugin-creator/scripts/update_plugin_cachebuster.py \
-  "/absolute/path/to/learning-mode/plugins/learning-mode"
-codex plugin add learning-mode@learning-mode-marketplace
-```
-
-Restore the release version in `.codex-plugin/plugin.json` before preparing a commit or
-public release. To return to the published marketplace:
-
-```bash
-codex plugin remove learning-mode@learning-mode-marketplace
-codex plugin marketplace remove learning-mode-marketplace
-codex plugin marketplace add melsayedx/learning-mode
-codex plugin add learning-mode@learning-mode-marketplace
-```
-
 ## What it does
 
 Learning Mode first determines intent:
